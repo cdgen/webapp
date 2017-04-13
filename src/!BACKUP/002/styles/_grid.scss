@@ -1,0 +1,126 @@
+﻿
+.grid,
+.cf {
+  *zoom: 1;  
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+}
+
+[class*='grid'] {
+	position: relative;
+	max-width: 100%;
+	z-index: 1;
+	margin: 0 auto;
+  height:100%;
+}
+
+.sections,
+.full {
+	position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+$hfull: calc(100vh - #{$headerHeight*2});
+
+@for $i from 1 through $rows {
+	[class*='hx#{$i}']{
+	
+		height: $i /$rows * 100%;
+
+		@include XS  {
+			min-height: ($i /$rows) * 50vh;
+			height: auto;
+		}
+		@include HM  {
+			height: ($i /$rows) * 100vh;
+		}
+	}
+}
+
+/******* END HEIGHT GRIDS ************/
+
+@for $i from 1 through $columns {
+	[class*='cx#{$i}'] {	
+		width:($i  / $columns) * 100%;
+	}
+}
+
+
+[class*='cx'] {
+	position: relative;
+	float:left;
+	margin: 0;
+	padding: 2em;
+
+	@include XM  {
+		min-width: 50%;
+		padding: 1.5em;
+	}
+
+	@include XS  {
+		width: 100%;
+		padding: 1em;
+	}
+}
+
+[class*='f-'] {
+	display: flex;
+	flex-wrap: wrap;
+}
+[class*='col'] {
+	display: flex;
+	flex-direction: column;
+    flex-wrap: wrap;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+}
+.cnt {
+  display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+[class*='ai-cnt'] {
+  display: flex;
+	align-items: center;
+}
+[class*='ai-end'] {
+  display: flex;
+	align-items: flex-end;
+}
+[class*='ai-start'] {
+  display: flex;
+	align-items: flex-start;
+}
+
+[class*='jc-cnt'] {
+	justify-content: center;
+}
+[class*='jc-btw'] {
+	justify-content: space-between;
+}
+
+
+body {
+	font-size: 100%;
+  
+	@include HL {font-size: 87.5%;}
+	@include HM {font-size: 81.25%;}
+	@include HS {font-size: 75%;}
+	@include XX {font-size: 68.75%;}
+  
+	@include XL {font-size: 95%;}
+	@include XL {font-size: 87.5%;}
+	@include XM {font-size: 81.25%;}
+	@include XS {font-size: 75%;}
+	@include XX {font-size: 68.75%;}
+  
+
+}

@@ -1,0 +1,245 @@
+.slider {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.btn--prev, .btn--next {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  width: $grid*2;
+  height: $grid*2;
+}
+
+.btn--next {
+  right: 0;
+  bottom: 0;
+  background: $cMain;
+}
+.btn--prev {
+  right: $grid*2;
+  bottom: 0;
+  background: $cMain;
+
+}
+
+.slider-item {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  
+  top: 0;
+  left: 0;
+  opacity:0;
+  
+  &.current {
+  
+  }
+}
+
+.slider-item {  
+  img {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+}
+
+.slider-bg  {  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  transform: translate3d(0,0,0);
+  
+  &:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(127, 127, 127, 0.1);
+  }
+}
+
+$tW: 22em;
+$tH: 30em;
+$mL: 1.5em;
+$mW: $tW - $mL;
+$mH: $tH - $mL;
+
+.bg__mask  {  
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  width: $tW;
+  height: $tH;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, $mL 0, $mL $mH, $mW $mH, $mW $mL, $mL $mL);
+  transform-origin: 50% 50;
+  transition-timing-function: ease-in-out;
+
+  .mask__inner {
+    z-index: -1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -50vw;
+    margin-top: -50vh;
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: luminosity;
+    transform-origin: 50% 50%;
+    transition-timing-function: ease-in-out;
+  }
+}
+ 
+
+/************************* SLIDER TITLE *******************/
+
+.slider-title {
+  display: block;
+  position: relative;
+  top: 50%;
+  left: 10%;
+  transform: translate(0, -50%);
+  padding: 4em;
+  width: $tW;
+  height: $tH;
+  z-index: 100;
+  
+  & > [class*="title-"] {
+    position: relative;
+    display: block;
+    width: 100%;
+    z-index: 10;
+    line-height: 1;
+  }
+
+  .title-num {
+    font-family: black;
+    vertical-align: top;
+    letter-spacing: -0.05em;
+    
+    span {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    .num__current {
+      font-size: 5vw;
+    }
+    
+    .num__total {    
+      padding: 1em;
+    
+      &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 1px;
+        height: 50%;
+        top: 25%;    
+        left: 0.5em;
+        background: #777;      
+      }
+    }
+	}
+  
+  .title-cat {
+    position: absolute;
+    display: block;
+    bottom: 0em;
+    right: -1em;
+    transform: rotate(90deg);
+    transform-origin: 100% 100%;
+    width: $tH;
+    
+    span {
+      display: block;      
+      line-height: 1;
+      vertical-align: bottom;   
+    }
+    span:nth-child(1) {
+      font-family: norm;
+      letter-spacing: 0.2em;
+      float:left;
+      opacity:0.6;
+      font-size: 0.75em;
+      text-transform: uppercase;
+    }
+    span:nth-child(2) {
+      font-family: black;
+      letter-spacing: -0.04em;
+      float:right;
+      font-size: 2em;
+    }
+  }
+  
+  .title-text {
+    
+    h2 {
+      display: block;
+      position: relative;
+      font-size: 2.5em;
+      font-family: light;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      
+      span {
+         font-family: light;
+         display: block;
+      }      
+      span:nth-child(2) {
+        font-family: black;
+      }
+    }
+    
+    h4 {
+      font-family: norm;
+      font-size: 0.6em;
+      line-height: 1.2;
+      flex: 1;
+      display: block;
+      padding: 0 2em;
+      max-width: 25em;
+      border-left: 1px solid;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+  }
+}
+
+
+
+
+.slider-item.current {
+  @include animation('fadeIn 3s 1');
+  opacity: 1;
+}
+.slider-item {
+  @include animation('fadeOut 1s 1');
+}
+
+
+

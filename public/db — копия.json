@@ -1,0 +1,171 @@
+[
+  {
+    "head": {
+      "index": 0,
+      "url": "/",
+      "id": "page_home",
+      "num": "01",
+      "cat": "intro",
+      "title": "Creative design_generator",
+      "subTitle": "Креативные идеи в прогрессивном исполнении"
+    },
+    "content": [
+      {
+        "key": "1", 
+        "title": "Креативный подход", 
+        "subTitle": "Свежие и неповторимые идеи в каждом проекте", 
+        "num": "01",
+        "cat": "creative", 
+        "img": "/img/slide__02.jpg",
+        "itemClass": "slide"
+      },{
+        "key": "2", 
+        "title": "Креативный подход", 
+        "subTitle": "Свежие и неповторимые идеи в каждом проекте", 
+        "num": "01",
+        "cat": "creative", 
+        "img": "/img/slide__02.jpg",
+        "itemClass": "slide"
+      }
+    ]
+  },
+  {
+    "head": {
+      "index": 1,
+      "url": "/about",
+      "id": "page_about",
+      "num": "02",
+      "cat": "about",
+      "title": "Немного_о себе",
+      "subTitle": "Web-дизайнер и FrontEnd-разработчик"
+    },
+    "content": [
+      {
+        "id": "page_about_01",
+        "num": "1",
+        "cat": "profile",
+        "title": "Hello_World",
+        "subTitle": "Приветствую. Меня зовут Александр Киртоакэ. Я - Web-дизайнер и FrontEnd-разработчик с богатым опытом работы в проектах разного уровня сложности",
+        "itemClass": "section skills",
+        "items": [
+          {
+            "id": "01",
+            "cat": "services",
+            "title":"Graphic_design",
+            "subTitle":"HTML5 / HTML, CSS",
+            "text": "90",
+            "itemClass": "item cx6"
+          },{
+            "id":"02",
+            "cat":"services",
+            "title":"FrontEnd_development",
+            "subTitle":"VanillaJS, ReactJS, GSAP",
+            "text":"80",
+            "itemClass":"item cx6"
+          }
+        ]
+      },
+      {
+        "id": "page_about_02",
+        "num": "2",
+        "cat": "apps&tools",
+        "title": "Рабочие_инструменты",
+        "subTitle": "Приложения и утилиты, которые я использую в работе",
+        "itemClass": "section tools",
+        "items": [
+        {
+          "id": "01",
+          "cat": "skillset",
+          "title":"HTML",
+          "subTitle":"HTML5 / HTML, CSS",
+          "value": "90",
+          "itemClass": "skills-item cx3"
+        },{
+          "id":"02",
+          "cat":"skillset",
+          "title":"ReactJS_VanillaJS",
+          "subTitle":"VanillaJS, ReactJS, GSAP",
+          "value":"80",
+          "itemClass":"skills-item cx3"
+        }
+      ]
+      }
+    ]
+  },
+  {
+    "head": {
+      "index": 3,
+      "url": "/skills",
+      "id": "page_skills",
+      "num": "04",
+      "cat": "skills",
+      "title": "Инструменты_и навыки",
+      "subTitle": "Services, skills and tools"
+    },
+    "content": [
+      {
+        "id": "page04_01_skillset",
+        "num": "1",
+        "cat": "skillset",
+        "title": "Skillset_Breakdown",
+        "subTitle": "Основные навыки и уровень владения ими",
+        "itemClass": "section skills",
+        "items": [
+        {
+          "id": "01",
+          "cat": "skillset",
+          "title":"HTML",
+          "subTitle":"HTML5 / HTML, CSS",
+          "value": "90",
+          "itemClass": "skills-item cx3"
+        },{
+          "id":"02",
+          "cat":"skillset",
+          "title":"JavaScript",
+          "subTitle":"VanillaJS, ReactJS, GSAP",
+          "value":"80",
+          "itemClass":"skills-item cx3"
+        },{
+          "id":"03",
+          "cat":"skillset",
+          "title":"Graphics",
+          "subTitle":"Photoshop, Illustrator",
+          "value":"90",
+          "itemClass":"skills-item cx3"
+        },{
+          "id":"04",
+          "cat":"skillset",
+          "title":"Motion Graphics",
+          "subTitle":"After Effects, Cinema 4D",
+          "value":"90",
+          "itemClass":"skills-item cx3"
+        }]
+      },
+      {
+        "id": "page_04_02_my_tools",
+        "num": "2",
+        "cat": "apps&tools",
+        "title": "Рабочие_инструменты",
+        "subTitle": "Приложения и утилиты, которые я использую в работе",
+        "itemClass": "section tools",
+        "items": [
+        {
+          "id": "01",
+          "cat": "skillset",
+          "title":"HTML",
+          "subTitle":"HTML5 / HTML, CSS",
+          "value": "90",
+          "itemClass": "skills-item cx3"
+        },{
+          "id":"02",
+          "cat":"skillset",
+          "title":"ReactJS_VanillaJS",
+          "subTitle":"VanillaJS, ReactJS, GSAP",
+          "value":"80",
+          "itemClass":"skills-item cx3"
+        }
+      ]
+      }
+    ]
+  }
+]

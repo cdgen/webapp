@@ -1,0 +1,209 @@
+﻿$durNav: 0.84s;
+$delay: $durNav;
+$delay2: $durNav+$durNav;
+$ease: cubic-bezier(0.5, 0.1, 0.1, 0.99);
+$easeLink: cubic-bezier(0.67, -0.21, 0.21, 1.33);
+$durLink: 0.44s;
+$delayL: $durLink+$durNav;
+$delayL2: $durLink*2;
+
+
+nav[role='navigation'] {
+  position: fixed;
+  display: block;
+  height: calc(100vh - #{$grid*2});
+  left: $grid*2;
+  right: $grid*2;
+  top: $grid;
+  visibility: hidden;
+  z-index: -1;
+  color: #888;
+  transition: z-index 0s 2s, visibility 0s 2s;
+  
+  &:before {
+    position: absolute;    
+    display: block;
+    content:'';
+    width: 100%;
+    height: 100%;
+    background: #212121;
+    visibility: hidden;
+    transform: translate(0,0) scaleX(0);
+    transition: transform 1s $ease1 1s, z-index 0s 2s, visibility 0s 2s;
+    transform-origin: right;
+    z-index: -1;
+  }
+  
+  .nav {
+    z-index: 112;
+    position: relative;
+    color: #888;
+    transform: translate(100%,0);
+    transition: transform 0.8s cubic-bezier(0.72, 0.09, 0.07, 0.99) 1.2s, z-index 0s 0s, visibility 0s 0s;
+    
+    a {
+        display: block;
+        text-align: center;
+        padding: 1em;
+        min-width: 15em;
+        position: relative;
+        flex:1;
+        transform: translate(10em,0);
+        transition: transform 1s cubic-bezier(0.72, 0.09, 0.07, 0.99);
+        
+        $num: 1;
+        @while $num < 8 {
+            &:nth-of-type(#{$num}) {
+              transition-delay: 0.1s * $num;
+            }
+            $num: $num + 1;
+        }
+    }
+  }
+  
+  &.active {
+    visibility: visible;
+    z-index: 100;
+    transition: z-index 0s 0s, visibility 0s 0s;
+
+    .nav {
+      z-index: 101;
+      position: relative;
+			opacity: 1;
+      transform: translate(0,0);
+      transition: transform 0.8s cubic-bezier(0.72, 0.09, 0.07, 0.99) 1.2s, z-index 0s 0s;
+			transform: translate3d(0,0,0);
+      
+      a {
+          transform: translate(0,0);
+          transition: $durLink $easeLink $delayL;
+          will-change: transform;
+          
+          $num: 1;
+          @while $num < 6 {
+            &:nth-of-type(#{$num}) {
+              transition-delay: 0.08s * $num + 2;
+            }
+            $num: $num + 1;
+          }
+      }
+      
+    }
+    
+    &:before {
+      transform: translate(0,0) scaleX(1);
+      transition: transform 1.2s $ease1 0.4s, z-index 0s 0s, visibility 0s 0s;
+      transform-origin: left;
+      z-index: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.navOpen {
+
+
+}
+
+
+
+header > .nav {
+		height: 100%;
+		display: flex;
+		position: relative;
+		flex-flow: row wrap;
+    align-items: center;
+		@include XS { display: none; }
+
+		.link, a {
+			position: relative;
+      flex:auto;
+			display: block;
+      padding: 0.25em 2em;
+      margin-left: 1px;
+			transition: color 0.3s $ease 0s;
+      text-transform: uppercase;
+      font-family: norm;
+      font-size: 0.675em;
+      letter-spacing: 0.025em;
+      font-weight:100;
+      line-height: 1.5;
+
+			@include beforeafter(100%,100%,1px,1px);
+			
+			&:before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				transition: transform 0.4s $ease 0.3s;
+				transform: translate3d(0,-100%,0);
+			}
+      
+			&:after {
+				width: 0;
+				height: 0;
+				top: 0;
+				position: absolute;
+				bottom: 0;
+				margin: auto;
+				left: 0px;
+			}
+
+			span {
+				transition: color 0.25s 0s,  transform 0.4s $ease 0.3s;
+				text-transform: uppercase;
+			}
+      
+			&:hover {
+				transition: color 0.2s $ease 0s;
+				color:#000;
+				&:before {				
+          transition: transform 0.4s $ease 0.3s;
+					transform: translate3d(0,0,0);
+				}
+				
+				span {
+					transition: color 0.25s 0s,  transform 0.4s $ease 0s;
+					&:before {
+						transition: color 0.25s 0s,  transform 0.4s $ease 0.4s;
+					}
+				}	
+			}
+      
+      &.active {
+				transition: color 0.2s $ease 0s;
+				color:#fff;
+				
+				&:before {
+					background: $black;
+          transition: transform 0.6s $ease 0.3s;
+					transform: translate3d(0,0,0);
+				}
+				
+				span {
+					transition: color 0.25s 0s,  transform 0.4s $ease 0s;
+
+					&:before {
+						transition: color 0.25s 0s,  transform 0.4s $ease 0.4s;
+					}
+				}	
+			}
+		}
+}
+
+footer nav {
+		.link,
+		a { 
+			color: #888;
+			padding-left: 1.75em;
+		    line-height: 1.6;
+			
+			span {
+				text-transform: uppercase;				
+			}
+			&:hover {
+				color: #fff;
+			}
+		}
+}
+

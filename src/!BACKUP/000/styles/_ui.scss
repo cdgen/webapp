@@ -1,0 +1,185 @@
+/*************************/
+/*** UI ELEMENTS START ***/
+/*************************/	
+
+.btn--menu {
+    position: relative;
+    width: $grid*2;
+    height: $grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    font-size: 1em;
+    transition: background 0.4s ease;
+    
+    label {
+      position: absolute;
+      left: 50%;
+      text-align: left;
+      display: block;
+      width: 100%;
+    }
+    
+    & > span, 
+    & > span:before {
+        position: absolute;
+        width: 2em;
+        height: 1px;
+        display: block;
+        background: #000;
+        margin: auto;
+        left: 1.5em;
+        top: 0;
+        bottom: 0;
+    }    
+    & > span:nth-child(1) {
+        transform: translate(0,0) scaleX(1) rotate(0);
+        transition: transform 0.3s $ease1 0.6s, top 0.3s 0.9s;
+        transform-origin: center;
+        top: -8px;
+    }
+      
+    & > span:nth-child(2) {
+        transform: translate(0,0) scaleX(0.8) rotate(0);
+        transition: transform 0.3s $ease1 1.2s;
+        transform-origin: right;
+    }
+    & > span:nth-child(3) {
+        transform: translate(0, 0) scaleX(0.9) rotate(0);
+        transition: transform 0.3s $ease1 0.6s, top 0.3s 0.9s;
+        transform-origin: center;
+        top: 8px;
+    }    
+
+    &:after,
+    &:before {
+
+    }
+    
+    &.active {
+     
+      & > span:nth-child(1) {
+          transform: translate(0,0) scaleX(1) rotate(-45deg);
+          transition: transform 0.3s $ease1 0.6s, top 0.3s 0.3s;
+          top: 0;
+      }
+        
+      & > span:nth-child(2) {
+          transform: translate(0,0) scaleX(0) rotate(0);
+          transition: transform 0.3s $ease1 0s;
+          transform-origin: right;
+      }
+      & > span:nth-child(3) {
+          transform: translate(0,0) scaleX(1) rotate(45deg);
+          transition: transform 0.3s $ease1 0.6s, top 0.3s 0.3s;
+          top: 0;
+      }
+    }
+}
+
+.btn--close {
+    position: relative;
+    width: $grid;
+    height: $grid;
+    display: block;
+    cursor: pointer;
+    
+ 	& > span,
+  & > span:before {
+		position: absolute;
+    display: block;
+		width:  2em;
+		height: 1px;
+		left: 1.5em;
+		top:0;
+		bottom:0;
+		margin: auto;
+		content:"";
+    background: #fff;
+  }
+  
+	& > span:before	{
+    height: 100%; left:0;
+  }
+	
+	span,
+	span:before	{
+		transition: transform 0.4s $ease1 1.4s;
+  }
+
+    & > span {
+		transform:rotate(45deg) translateZ(0);		
+		
+        &:before {
+			width: 100%;			
+			transform:rotate(-90deg) translateZ(0);
+        }
+    }
+	&:after,
+	&:before {
+		transform: scaleX(0) translateZ(0);
+	}
+}
+
+	
+	.border {
+		position: absolute;
+		display: block;
+		width: 70%;
+		height: 70%;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		opacity:0.1;
+		
+		span {
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		span:before,
+		span:after,
+		&:before,
+		&:after {
+			display: block;
+			position: absolute;
+			width:  0.5em;
+			height: 0.5em;
+			content:"";
+			transition: all 0.4s $ease;
+		}
+		
+		& span:before {
+			right: 0;
+			top: 0;			
+		    border-right: 1px solid;
+			border-top: 1px solid;
+		}
+		& span:after{
+			left: 0;
+			bottom:0;
+		    border-left: 1px solid;
+			border-bottom: 1px solid;
+		}
+		&:before {
+			left: 0;
+			top: 0;			
+		    border-left: 1px solid;
+			border-top: 1px solid;
+		}
+		&:after{
+			right: 0;
+			bottom:0;
+		    border-right: 1px solid;
+			border-bottom: 1px solid;
+		}
+	}
+	

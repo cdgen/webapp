@@ -1,0 +1,441 @@
+/*** IMPORT ***/
+@import 'reset';
+@import 'mixins';
+@import 'variables';
+@import "helpers";
+@import "fonts";
+@import 'anm';
+@import "ui";
+@import "templates";
+@import "grid";
+@import "nav";
+@import "test";
+
+
+/* ------------ BASE ------------- */
+html {
+	font-smooth: always !important;
+	-webkit-font-smooth: always !important;
+	-moz-font-smooth: always;
+  -webkit-tap-highlight-color: transparent;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  text-rendering: optimizeLegibility!important;
+  font-kerning: none;
+}
+
+body {
+	font-family: "light", Arial, sans-serif;
+	font-style:	normal;
+  font-weight: 100;
+	line-height: 1.4;
+	background-color: $white;
+	color: $black;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+  border: 0px none;
+  outline: none;
+	vertical-align: middle;
+}
+
+label {
+  font-size: 0.64em;
+  text-transform: uppercase;
+  font-family: norm;
+  letter-spacing: 0.02em;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/**************** FONTS SIZES ************/
+
+h1 {
+	font-size: 2.4em;
+}
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.4em;
+}
+h4 {
+	font-size: 1.25em;
+}
+
+/**************** TEMPLATE ************/
+
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  width: 100%;
+  height: $grid;
+  top: 0;
+  left: 0;
+
+	.brand {
+		height: 100%;
+		width: $grid*2;
+		text-align: center;
+    
+		img {
+			display: block;
+			position: relative;
+			height: 22px;
+			@extend .cntTransform;
+		}
+	}
+  
+}
+/************************* PAGE CONTENT *******************/
+
+.page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: $grid 0;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  padding: 0 $grid*2;
+}
+
+/************************* PAGE TITLE *******************/
+
+.page-title {
+  position: fixed;
+  display: flex;
+  width: calc(100vh - #{$grid*2});
+  height: $grid*2;
+  top: $grid;
+  left: $grid*2;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 10;
+  padding: 0;
+  
+  & > [class*="title-"] {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+    flex: auto;
+    padding: 0 1em;
+    @include beforeafter( 100%,1px, 100%,100%)
+    
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+      
+    $num: 1;
+    @while $num < 4 {
+      &:nth-of-type(#{$num}):after {
+        transition-delay: 0.1s * $num*1.5;
+      }
+      $num: $num + 1;
+    }
+  }
+
+  .title-cat {
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    max-width: 10em;
+  
+      &:after {
+        width: 1px;
+        height: 1em;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: #999;
+      }
+      label {
+        display: inline-block;
+        font-size: 0.64em;
+        font-family: monospace;
+        letter-spacing: 0.5em;
+        font-weight: 100;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 0.5em;
+			}
+      
+			span {
+        font-size: 2em;
+        display: block;
+        font-family: black;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+			}
+  }
+
+    .title-num {
+      max-width: 8em;
+      text-align: right;
+      align-items: center;
+      padding: 0 1em;
+      flex-direction: row;
+      letter-spacing: -0.05em;
+      
+      & .num__current {
+        position: relative;
+        display: block;
+        font-size: 2.5em;
+        font-family: black;
+        letter-spacing: -0.05em;
+      }
+      
+      & .num__total {
+        position: relative;
+        display: block;
+        font-family: black;
+        padding-left: 1em;
+        color: #777;
+        
+        &:after {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 1px;
+          height: 50%;
+          top: 25%;        
+          left: 0.5em;
+          background: #777;
+          letter-spacing: -0.05em;
+        }
+      }
+		}
+    
+    .title-text {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+    
+      &:after {
+        width: 1px;
+        height: 1em;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        background: #999;
+      }
+      h1 {
+        display: block;
+        position: relative;
+        font-size: 1.4em;
+        font-family: light;
+        letter-spacing: -0.05em;
+        line-height: 1;
+        text-transform: uppercase;
+        padding: 0 1rem;
+          
+        span {
+           font-family: light;
+           display: block;
+        }          
+        span:nth-child(2) {
+          font-family: black;
+        }
+      }
+        
+      h4 {
+        font-family: norm;
+        font-size: 0.6em;
+        line-height: 1.2;
+        flex: 1;
+        display: block;
+        padding: 0 2em;
+        max-width: 25em;
+        border-left: 1px solid;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+    }
+}
+
+
+
+/********* BACKGROUND IMAGES ********/
+
+.imgBg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+    
+   .bordered & {
+      border: 5px solid #fff;
+   }
+	
+	img{
+		display: block;
+		position: relative;
+		max-width: 200%;
+		min-width: 100%;
+		min-height: 100%;
+		height: auto;
+		width:auto;
+		top: 50%;
+		left:50%;
+		transform: translate3d(-50%, -50%, 0);
+	}
+}
+
+/********* END BACKGROUND IMAGES ********/
+
+h3,
+h2 {
+  font-family: light;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  
+	span {
+		display:block;
+		line-height:1;
+	}
+	span:nth-child(2) {
+		font-family: black;
+	}
+}
+
+
+.card-grid {
+	position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  .card {
+    position: absolute;
+    display: block;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    border-left: 0px solid transparent;
+    border-bottom: 0px solid transparent;
+    transform: scale(0.5);
+    transition: all 0.5s;
+    
+    @include XS {
+      flex: 1 1 100%;
+    }
+    
+    .card-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-position: center center;
+      background-size: cover;
+    }
+    
+    .card-caption {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      overflow: hidden;
+      color: #fff;
+      padding: 2em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-size: 2em;
+    }
+  }
+    .card:nth-child(1) {
+      transform-origin: 0 0;
+    }
+    .card:nth-child(2) {
+      transform-origin: 100% 0;
+    }
+    .card:nth-child(3) {
+      transform-origin: 0% 100%;
+    }
+    .card:nth-child(4) {
+      transform-origin: 100% 100%;
+    }
+}
+.card-grid.open {
+  .card {
+      transform: scale(0);
+  }
+  .card.active {
+      transform: scale(1);
+      transform-origin: 0% 0%;
+      transition:all 0.5s;
+      left: 0%;
+      top: 0%;
+  }
+  .card-content{
+    position: absolute;
+    left: 0;
+    top: 0;
+    flex: 1;
+    display: block;
+    bottom: 0;
+    right: 0;
+    transition:all 0.5s;
+  }
+}
+
+@import "loader";

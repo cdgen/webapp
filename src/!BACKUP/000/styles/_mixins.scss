@@ -1,0 +1,99 @@
+// DEVICES MEDIA QUERIES
+$XXL: 1440px;
+$XL: 1240px;
+$XM: 960px;
+$XS: 760px;
+$XX: 480px;
+
+@mixin XX { @media only screen and (max-width: $XX ) { @content; }}
+@mixin XS { @media only screen and (max-width: $XS ) { @content; }}
+@mixin XM { @media only screen and (max-width: $XM ) { @content; }}
+@mixin XL { @media only screen and (max-width: $XL ) { @content; }}
+@mixin XXL{ @media only screen and (max-width: $XXL) { @content; }}
+
+//  SIZES AND GRID
+$grid:		5em;
+$btnWidth: $grid;  
+$columns: 12;
+$rows: 6;
+
+
+//  ALIGN-CENTER ELEMENT ABSOLUTE POSITION
+@mixin aCentered($w,$h) {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
+		bottom:0;
+		right:0;
+		margin: auto;
+		width: $w;
+		height: $h;
+}
+
+@mixin fullSize( $pos, $display) {
+	position: $pos;
+	display: $display;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	
+}
+
+// DISPLAY PSEUDO ELEMENTS
+@mixin beforeafter($bw,$bh,$aw,$ah) {
+	&:before, &:after {
+		display: block;
+        content: '';
+    }
+	&:before {
+		width: $bw;
+		height: $bh;
+	}
+	&:after {
+		width: $aw;
+		height: $ah;
+	}
+}
+
+
+@mixin vertical($trOrig) {
+	position: absolute;
+	display: block;
+	transform: rotate(90deg);
+    transform-origin: $trOrig;
+    margin: 0;
+    right: 1em;
+    bottom: 0em;
+    text-align: left;
+    font-family: bold;
+    padding-left: 4em;
+}
+
+/*******************/
+/*      HELPERS    */
+/*******************/
+.cntAbs {  
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.cntTransform {
+  top: 50%;
+  left:50%;
+  transform: translate3d(-50%, -50%, 0)
+}
+
+.pseudo {
+    &:after, 
+    &:before {
+        position: absolute;
+        content: '';
+        display: block;
+    }
+}

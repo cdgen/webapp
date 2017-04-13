@@ -1,0 +1,201 @@
+/*************************/
+/*** UI ELEMENTS START ***/
+/*************************/	
+$ease: cubic-bezier(0.5, 0, 0, 1); 
+$td: 400ms;
+$tl: 300ms;
+$tl2: $td+$tl*2;
+$grid: 4em;
+
+.btn--mail,
+.btn--menu {
+    position: relative;
+    width: $grid*2;
+    height: $grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    font-size: 1em;
+    
+    label {
+      position: absolute;
+      left: 50%;
+      text-align: left;
+      display: block;
+      width: 100%;
+    }
+    
+    & > span {
+        position: absolute;
+        width: 1.5em;
+        height: 1px;
+        display: block;
+        background: #000;
+        margin: auto;
+        left: 1.5em;
+        top: 0;
+        bottom: 0;
+    }    
+    & > span:nth-child(1) {
+        transform: translate(0,0) scaleX(1) rotate(0);
+        transition: transform $td $ease $tl, top $td $ease $tl2;
+        transform-origin: center;
+        top: -6px;
+    }
+      
+    & > span:nth-child(2) {
+        transform: translate(0,0) scaleX(0.8) rotate(0);
+        transition: transform $td 1.2s;
+        transform-origin: right;
+    }
+    & > span:nth-child(3) {
+        transform: translate(0, 0) scaleX(1) rotate(0);
+        transition: transform $td $ease $tl, top $td $ease $tl2;
+        transform-origin: center;
+        top: 6px;
+    }    
+
+    &.active {
+     
+      & > span:nth-child(1) {
+          transform: translate(0,0) scaleX(1) rotate(-45deg);
+          transition: transform 0.25s ease 0.5s, top 0.25s ease-out 0.25s;
+          top: 0;
+      }
+        
+      & > span:nth-child(2) {
+          transform: translate(0,0) scaleX(0) rotate(0);
+          transition: transform 0.25s ease-out 0s;
+          transform-origin: right;
+      }
+      & > span:nth-child(3) {
+          transform: translate(0,0) scaleX(1) rotate(45deg);
+          transition: transform 0.25s ease 0.5s, top 0.25s ease-out 0.25s;
+          top: 0;
+      }
+    }
+}
+
+.btn--close {
+    position: relative;
+    width: $grid;
+    height: $grid;
+    display: block;
+    cursor: pointer;
+    
+ 	& > span,
+  & > span:before {
+		position: absolute;
+    display: block;
+		width:  1.8em;
+		height: 1px;
+		left: 2em;
+		top:0;
+		bottom:0;
+		margin: auto;
+		content:"";
+    background: #fff;
+  }
+  
+	& > span:before	{
+    height: 100%; left:0;
+  }
+	
+	span,
+	span:before	{
+		transition: transform 0.4s $ease1 1.4s;
+  }
+
+    & > span {
+		transform:rotate(45deg) translateZ(0);		
+		
+        &:before {
+			width: 100%;			
+			transform:rotate(-90deg) translateZ(0);
+        }
+    }
+	&:after,
+	&:before {
+		transform: scaleX(0) translateZ(0);
+	}
+}
+
+
+.btn--prev,	
+.btn--next {
+    position: relative;
+    width: $grid;
+    height: 2em;
+    display: block;
+    margin: auto;
+    
+    span {
+      text-transform: uppercase;
+      font-size: 0.7em;
+      letter-spacing: 0.1em;
+      line-height: 3;
+      position: relative;
+    }
+    
+		&:before, 
+    &:after {
+      content:"";
+      display: block;
+      position: absolute;
+      opacity: 0.7;
+    }
+    
+		&:after {
+      width: 5em;
+      height: 1px;
+      border-bottom: 1px solid;
+      bottom: 50%;
+      margin: auto;
+		}
+    
+		&:before {
+			width: 5px;
+			height: 5px;
+		  top: 50%;
+      margin-top: -3px;
+      transform: rotate(45deg) ;
+		}
+}
+
+.btn--prev {
+  text-align: right;
+  
+    &:after { left: 1em;}
+    
+    &:before {
+        left: 1em;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+    }
+}
+.btn--next {
+    text-align: left;
+    &:after {
+      right: 1em;
+		}
+		&:before {
+      right: 1em;
+      border-right: 1px solid;
+			border-top: 1px solid;
+		}
+}
+
+input[type=text] {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 100%;
+  background: transparent;
+  padding: 0 15px;
+  color: #222;
+  font-size: 14px;
+  font-weight: 100;
+}

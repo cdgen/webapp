@@ -1,0 +1,25 @@
+﻿/************** LOADER ************/
+#loader {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;	
+	overflow: hidden;
+	background: $cDark;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 1s 0s, opacity 0s 2s, z-index 0s 2s;
+	opacity: 0;
+	z-index: -1;
+}
+
+#loader.active {
+	opacity: 0.5;
+	z-index: 1000;
+	transform: scaleX(1);
+	transition: all 0s;
+}
+
+/************** END LOADER ************/
