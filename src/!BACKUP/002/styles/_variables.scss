@@ -1,0 +1,181 @@
+// GREY COLORS
+$white: #ffffff;
+$black: #000000;
+
+// COLORS MAIN
+$cMain: #0072c6;
+$cMainL: #077fcc;
+$cMainD: #0065af;
+
+// COLORS SECOND
+$cSec: #96ca1b;
+$cSecL: #a5d040;
+$cSecD: #7eb105;
+
+// COLORS LIGHT
+$cLight	: #f5f5f5;
+$cLightL: #fafafa;
+$cLightD: #f1f1f1;
+
+// COLORS DARK
+$cDark	: #212121;
+$cDarkL	: #404040;
+$cDarkD	: #1e1e1e;
+
+
+$linkColor: $black;
+$linkHover: $cDarkD;
+
+// COLORS CLASS
+.bWhite	 { background-color: $white;}
+.cWhite  { color: $white;}
+.bBlack	 { background-color: $black;}
+.cBlack  { color: $black;}
+
+.bMain  {background-color: $cMain;}
+.bMainL {background-color: $cMainL;}
+.bMainD {background-color: $cMainD;}
+.cMain { color: $cMain;}
+.cMainL { color: $cMainL;}
+.cMainD { color: $cMainD;}
+
+.bSec  {background-color: $cSec;}
+.bSecL {background-color: $cSecL;}
+.bSecD {background-color: $cSecD;}
+.cSec  { color: $cSec;}
+.cSecL { color: $cSecL;}
+.cSecD { color: $cSecD;}
+
+.bLight { background-color: $cLight;}
+.bLightL { background-color: $cLightL;}
+.bLightD { background-color: $cLightD;}
+.cLight { color: $cLight;}
+.cLightL { color: $cLightL;}
+.cLightD { color: $cLightD;}
+
+.bDark { background-color: $cDark;}
+.bDarkL{ background-color: $cDarkL;}
+.bDarkD { background-color: $cDarkD;}
+.cDark { color: $cDark;}
+.cDarkL { color: $cDarkL;}
+.cDarkD { color: $cDarkD;}
+
+
+/*******************/
+/* ANIMATE OPTIONS */
+/*******************/
+$ease1: cubic-bezier(0.8, 0, 0.1, 1);
+$ease: cubic-bezier(0.21, 0.99, 0.21, 0.99);
+$ease2: cubic-bezier(0.99,0.1,0.35,1.2);
+$ease3: cubic-bezier(0.5, 0.1, 0.1, 0.99);
+$easeMain: cubic-bezier(.19,1,.22,1);
+$easeMain: cubic-bezier(0.4,0,0.2,1);
+
+
+// WIDTH MEDIA QUERIES
+$XXL: 1440px;
+$XL: 1240px;
+$XM: 960px;
+$XS: 720px;
+$XX: 480px;
+
+@mixin XX { @media only screen and (max-width: $XX ) { @content; }}
+@mixin XS { @media only screen and (max-width: $XS ) { @content; }}
+@mixin XM { @media only screen and (max-width: $XM ) { @content; }}
+@mixin XL { @media only screen and (max-width: $XL ) { @content; }}
+@mixin XXL{ @media only screen and (max-width: $XXL) { @content; }}
+
+// HEIGHT MEDIA QUERIES
+$HL: 720px;
+$HM: 600px;
+$HS: 480px;
+$HX: 320px;
+
+@mixin HX { @media only screen and (max-height:$HX) { @content; }}
+@mixin HS { @media only screen and (max-height:$HS) { @content; }}
+@mixin HM { @media only screen and (max-height:$HM) { @content; }}
+@mixin HL { @media only screen and (max-height:$HL) { @content; }}
+
+
+//  SIZES AND GRID
+$grid: 4em;
+$btnWidth: $grid;  
+$columns: 12;
+$rows: 6;
+
+
+//  ALIGN-CENTER ELEMENT ABSOLUTE POSITION
+@mixin aCentered($w,$h) {
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 0;
+		bottom:0;
+		right:0;
+		margin: auto;
+		width: $w;
+		height: $h;
+}
+
+.fullSize {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+// DISPLAY PSEUDO ELEMENTS
+@mixin beforeafter($bw,$bh,$aw,$ah) {
+	&:before, &:after {
+		display: block;
+        content: '';
+    }
+	&:before {
+		width: $bw;
+		height: $bh;
+	}
+	&:after {
+		width: $aw;
+		height: $ah;
+	}
+}
+
+/*******************/
+/*      HELPERS    */
+/*******************/
+.cntAbs {  
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.cntTransform {
+  top: 50%;
+  left:50%;
+  transform: translate3d(-50%, -50%, 0)
+}
+
+.pseudo {
+    &:after, 
+    &:before {
+        position: absolute;
+        content: '';
+        display: block;
+    }
+}
+
+.rounded {
+  display: inline-block;
+  width: 1.8em;
+  height: 1.8em;
+  font-size: 0.64em;
+  line-height: 1.8;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(127, 127, 127, 0.5);
+}

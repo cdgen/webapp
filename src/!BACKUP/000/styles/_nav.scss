@@ -1,0 +1,13 @@
+﻿nav.nav-page {
+    position: fixed;
+    left: 5em;
+    display: flex;
+    transform: rotate(90deg);
+    transform-origin: 50% 0%;
+    top: 50%;
+    left: -4em;
+    height: 2em;
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

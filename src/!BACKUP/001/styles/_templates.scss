@@ -1,0 +1,94 @@
+﻿$grid: 4em;
+
+html, body, #root, #wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+	position: relative;
+  overflow: hidden;
+  @include HM  {overflow-y: scroll;}
+  @include XS  {overflow-y: scroll;}
+}
+
+header {
+	position: fixed;
+	top:0;
+	left: $grid*2;
+	right: $grid*2;
+	height:$grid;
+	z-index: 100;
+}
+
+main {
+	position: fixed;
+	display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;  
+}
+
+aside {
+  z-index: 1111;
+  position: fixed;
+  transform: rotate(90deg);
+  transform-origin: 100% 100%;
+  bottom: $grid;
+  right: $grid*2;
+  width: calc(100vh - #{$grid*2});
+  height: $grid*2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .social-links {
+    display: flex;
+    align-items: center;
+    font-size: 0.7em;
+    font-family: norm;
+    
+    h4 {
+      font-size: 0.8em;
+    }
+    
+    a{
+      padding: 0 1em;
+      text-transform: uppercase;
+      margin-right: 1em;
+      border-right: 1px solid #ccc;
+      line-height: 1.4;
+      align-items: center;
+      display: flex;
+      
+      i {
+        font-size: 1.5em;
+        padding: 0 0.5em;
+      }
+    }
+  
+  }
+
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+#overlay {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+	
+    &.show {
+      display: block;
+    }
+}

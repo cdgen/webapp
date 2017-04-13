@@ -1,0 +1,286 @@
+// Colors
+$red: #E2142D;
+$lightgrey: #EFEFEF;
+
+$white: #FFFFFF;
+$black: #2E2E3A;
+
+// Mixins
+@mixin mq($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+// Styles
+#product {
+	font-family: 'Teko', sans-serif;
+	height: 100vh;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	align-items: center;
+	justify-content: center;
+	background: $black;
+}
+
+.Product {
+	background: $white;
+	width: 800px;
+	height: 500px;
+	
+	@include mq(800px) {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.Header {
+	border-bottom: 1px solid $lightgrey;
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+	justify-content: space-between;
+	box-sizing: border-box;
+	height: 70px;
+	
+	.tagline {
+		font-size: 22px;
+		height: 16px;
+	}
+}
+
+.Logo {
+	fill: #E2142D;
+	width: 70px;
+	height: 26px;
+}
+
+.Content {
+	width: 100%;
+	height: 430px;
+	display: flex;
+	background: $white;
+	
+	@include mq(800px) {
+		flex-direction: column;
+		height: calc(100vh - 70px);
+	}
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 0;
+	}
+	
+	50% {
+		opacity: 1;
+	}
+	
+	100% {
+		opacity: 0;
+	}
+}
+
+.Images {
+	width: 400px;
+	height: 430px;
+	position: relative;
+	overflow: hidden;
+	
+	@include mq(800px) {
+		width: 100vw;
+	}
+	
+	@for $i from 0 through 6 {
+		&[data-image='#{$i}'] {
+			.wrapper {
+				left: - 400px * $i;	
+				
+				@include mq(800px) {
+					left: -16.666667% * $i;
+				}
+				
+				.Image {
+					img {
+						padding-top: 0;
+						transform: scale(1);
+					}
+					
+					.BGText {
+						* {
+							
+							@for $j from 1 through 10 {
+								$delay: (random(2) * $j) / 2 + 's';	
+								
+								&:nth-child(#{$j}) {
+									animation: pulse $j * 3s infinite;
+									animation-delay: $delay;		
+								}
+							}
+							
+							
+						}
+						
+					}
+				}
+			}
+			
+			.Dot:nth-child(#{$i + 1}) {
+				background: $red;
+			}
+		}
+	}
+	
+	.wrapper {
+		width: calc(400px * 6);
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: flex;
+		transition: left .5s ease-in-out .5s;
+		
+		.Image {
+			width: 400px;
+			flex: 1 0 400px;
+			margin-right: 2px;
+			height: 430px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			overflow: hidden;
+			
+			@include mq(800px) {
+				flex: 1 0 100vw;
+			}
+			
+			img {
+				display: block;
+				width: 80%;
+				position: relative;
+				z-index: 2;
+				transform: scale(.8);
+				padding-top: 100px;
+				transition: transform .5s ease 1s, padding .5s ease 1s;
+			}
+			
+			.BGText {
+				position: absolute;
+				top: 28px;
+				left: 5px;
+				color: $lightgrey;
+				font-size: 280px;
+				line-height: 210px;
+				font-weight: 600;
+				opacity: .5;
+				
+				sub {
+					vertical-align: sub;
+					position: relative;
+				}
+				
+				sup {
+					vertical-align: super;
+					position: relative;
+				}
+			}
+		}
+	}
+}
+
+.Dots {
+	position: absolute;
+	bottom: 30px;
+	left: 0;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 3;
+	
+	.Dot {
+		$size: 10px;
+		background: $lightgrey;
+		height: $size;
+		width: $size;
+		border-radius: $size;
+		margin: 3px;
+		transition: transform .125s ease, background .125s ease;
+		
+		&:hover {
+			transform: scale(1.2);
+			background: $red;
+		}
+		
+		&[data-active='true'] {
+			background: $red;
+		}
+	}
+}
+
+.Information {
+	width: 400px;
+	box-sizing: border-box;
+	padding: 40px;
+	border-right: 1px solid $lightgrey;
+	
+	@include mq(800px) {
+		order: 2;
+		border-right: 0;
+		width: 100%;
+	}
+	
+	.Title {
+		font-size: 48px;
+		text-transform: uppercase;
+		line-height: .8;
+		margin-bottom: 10px;
+	}
+	
+	.Price {
+		color: $red;
+		font-size: 36px;
+		margin-bottom: 20px;
+	}
+	
+	.Description {
+		font-family: sans-serif;
+		font-size: 12px;
+		font-weight: 100;
+		line-height: 1.5;
+		padding-right: 30px;
+		color: $black;
+		opacity: .6;
+	}
+	
+	.Buy {
+		background: desaturate($red, 20);
+		color: $white;
+		text-transform: uppercase;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 45px;
+		font-size: 20px;
+		margin-top: 30px;
+		user-select: none;
+		transition: background .125s ease, transform .125s ease;
+		
+		&:hover {
+			background: lighten($red, 5);
+			cursor: pointer;
+		}
+		
+		&:active {
+			transform: scale(.97);
+		}
+		
+		.label {
+			height: 14px;
+		}
+	}
+}

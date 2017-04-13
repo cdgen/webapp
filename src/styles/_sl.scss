@@ -1,0 +1,269 @@
+.xslider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  
+  &-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: transform 1.4s ease 0.4s;
+    will-change: transform;
+  }
+
+  &-dots {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: $grid*2;
+    left: 0;
+    bottom: 0;
+    transform: translate(0,0);
+    z-index: 100;
+    
+    
+    & .dot-item {
+      position: relative;
+      width: $grid*3;
+      align-self: center;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background: $cLight;
+      text-align: center;
+      justify-content: center;
+      color: #000;
+      
+      .dot-num {
+        font-size: 2em;
+        font-family: bold;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+      
+      .dot-label {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        line-height: 1;
+        font-family: black;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        font-size: 0.8em;
+      }
+      
+      &.active {
+        background: #006cd9;
+        color: #fff;
+      }
+    }
+  }
+  
+  
+}
+
+
+
+
+
+.slide-item:nth-child(1) {
+  z-index: 3;
+}
+.slide-item:nth-child(2) {
+  z-index: 2;
+}
+.slide-item:nth-child(3) {
+  z-index: 1;
+}
+
+.slide-item {
+  position: absolute;
+  height: 100%;
+  top:0;
+
+
+  .item-content {
+    opacity: 0;    
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s 0s;
+
+    &.active {
+      opacity: 1;
+      transition: opacity 1s 2s;
+    }
+  }
+
+  .item-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-size: cover;
+    background-position: center center;
+    transform: translate3d(-50%,0,0);
+    transition: transform 1.4s ease 0.4s;
+    will-change: transform;
+  }
+  
+  &.active {
+  
+    .item-bg {
+      transform: translate3d(0,0,0em);
+      will-change: transform;
+    }
+    
+  }
+  
+}
+ 
+.item-content {
+  padding: $grid $grid*2;
+}
+
+
+
+
+.section-title {
+  .title-cat {
+    transform: rotate(90deg) translate(50%,0);
+    font-size: 4em;
+    transform-origin: 100% 100%;
+    right: 2em;
+    bottom: 50%;
+    text-align: center;
+    font-family: black;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+  }
+}
+
+
+.slide-item {
+  padding: $grid;
+  .title {
+    display: block;
+  }
+  
+  .title-num {
+    font-family: bold;
+    display: flex;
+    align-items: flex-start;
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    .current {
+      font-size: 8em;
+    }
+    .total {
+      font-size: 2em;
+      opacity: 0.2;
+    }
+    .line {
+      width: 1px;
+      height: 2em;
+      margin: 0 0.5em;
+      background: #7f7f7f;
+    }
+  }
+  
+  .title-cat {
+    position: absolute;
+    transform: rotate(90deg) translate(0%,0);
+    font-family: bold;
+    font-size: 3em;
+    line-height: 1;
+    transform-origin: 0 0;
+    left: 1em;
+    top: 4em;
+    opacity: 0.2;
+  }
+  .title-text {
+    width: 15em;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 8em;
+    left: 4em;
+    
+    &:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      left: -2em;
+      top: 0;
+      height: 100%;
+      bottom: 0;
+      box-shadow: 0 0 0 0.5em #aaa;
+      opacity: 0.2;
+      z-index:-1;
+    }
+    
+    h3, h2 {
+      font-family: light;
+      font-size: 3em;
+      text-transform: none;
+      letter-spacing: -0.04em;
+      line-height: 1;
+       margin-bottom: 1em;
+    }
+  }
+}
+  
+.card {
+  height: 20em;
+  min-width: 15em;
+  overflow: hidden;
+}
+
+.bgLoad {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: translate(100%,0);
+  transition: transform 1s;
+  transform-origin: 0 0;
+
+  z-index:-1;
+}
+
+.slide-item.active .bgLoad {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  @include animation('fadeIn 4s');
+  transform:  translate(0%,0);
+  transition: transform 2s;
+}
+
+
+.works {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}

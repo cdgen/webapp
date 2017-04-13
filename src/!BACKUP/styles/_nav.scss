@@ -1,0 +1,393 @@
+﻿$durNav: 0.84s;
+$delay: $durNav;
+$delay2: $durNav+$durNav;
+$durLink: 0.44s;
+$delayL: $durLink+$durNav;
+$delayL2: $durLink*2;
+
+$t: 300ms;
+$t0: $t*0.5;
+$t1: $t*1;
+$t2: $t1*2;
+$t3: $t1*3;
+$t4: $t1*4;
+$t5: $t1*5;
+$t6: $t1*6;
+$t7: $t1*7;
+$t8: $t1*8;
+$t9: $t1*9;
+$t10: $t1*10;
+$t11: $t1*11;
+$t12: $t1*12;
+$t13: $t1*13;
+$t14: $t1*14;
+$t15: $t1*15;
+$t20: $t1*20;
+
+$ease: cubic-bezier(0.5, 0.1, 0.1, 0.99);
+$easeIn: cubic-bezier(0.77, 0.1, 0.1, 0.99);
+
+$easeExpo: cubic-bezier(0.7, 0.1, 0.07, 0.99);
+$easeSwipe: cubic-bezier(0.67, -0.21, 0.21, 1.33);
+
+$easeSwipeIn: cubic-bezier(0.67, 0.67, 0.1, 1.25);
+
+$easeOutBack: cubic-bezier(1, 0, 0.5, 0.1);
+$easeInBack: cubic-bezier(0.1, 0.5, 0, 1);
+
+/************** DATA-HOVER LINK *************/
+.hover {
+	cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  text-transform: uppercase;
+  
+  [data-hover] {
+    position: relative;
+    display: inline-block;
+    transition: transform $t1 $easeInBack $t0;
+    
+    &:before {
+      position: absolute;
+      display: block;
+      top: $grid;
+      width:100%;
+      content: attr(data-hover);
+      transform: translate3d(0, 0, 0);
+      transition: transform  $t1 $easeOutBack 0s;
+    }
+
+    &:after {
+      position: absolute;
+      display: block;
+      bottom: -$grid;
+      height:0px;
+      width:100%;
+      content: '';
+      transform: translate3d(0, 0, 0) scaleX(0);
+      transform-origin: left;
+      border-bottom: 1px solid  rgba(127, 127, 127, 1);
+      transition: transform $t1 $easeInBack 0s;
+    }
+  }
+  
+  &:focus,
+	&:hover {
+    [data-hover] {
+      transform: translate3d(0,-$grid,0);
+      transition: transform $t1 $easeOutBack 0s;
+
+      &:before {
+        transform: translate3d(0, 0, 0);
+        transition: transform $t1 $easeOutBack $t0;
+      }
+    
+      &:after {
+        transform: translate3d(0, 0, 0) scaleX(1);
+        transition: $t1 $easeOutBack $t0;
+      }
+    }
+	}
+}
+
+/************** DATA-HOVER LINK *************/
+
+nav[role='navigation'] {
+  position: fixed;
+  display: block;
+  height: calc(100vh - #{$grid*2});
+  left: $grid*2;
+  right: $grid*2;
+  top: $grid;
+  visibility: hidden;
+  overflow:hidden;
+  z-index: -1;
+  color: #888;
+  transition: z-index 0s $t20, visibility 0s $t20;
+
+  &:before,
+  &:after {
+    position: absolute;    
+    display: block;
+    content:'';
+    width: 50%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    visibility: hidden;
+    transform: translate(0, 0) scaleY(0);
+    transition: transform $t6 $ease $t8, z-index 0s $t14, visibility 0s $t14;
+  }
+ 
+  &:before {
+    left: 0%;
+    top: -100%;
+    background: #303030;
+    transform-origin: left top;
+  }
+  
+  &:after {
+    right: 0%;
+    top: 100%;
+    background: #272727;
+    transform-origin: right bottom;
+  }
+    
+  h3 {
+    font-size: 4em;
+    display: flex;
+    width: 8em;
+    color: #444;
+    z-index: 111;
+    position: absolute;
+    text-transform: none;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+    top: 0.5em;
+    line-height: 1;
+    left: 1.5em;
+    z-index:120;
+  }
+
+  .nav {
+    position: absolute;
+    top:0;
+    right: 0%;
+    width: 50%;
+    height: 100%;
+    padding: 2em;
+    z-index: 111;    
+    transform: translate3d(0, 100%,0);
+    transition: transform $t7 $easeOutBack $t7, z-index 0s 0s, visibility 0s 0s;
+    will-change: transform opacity;
+    
+    a {
+        width: 100%;
+        font-size: 1.75em;
+        font-family: bold;
+        letter-spacing: 0;
+        display: inline-block;
+        color: #666666;
+        line-height: 1.5;
+        padding: 0 1em;
+        opacity: 0;
+        transform: translate3d(0,100%,0);
+        transition: transform $t4 $easeOutBack $t4, opacity $t2 $t9;
+        will-change: transform opacity;
+  
+        &:before {
+          content: '';
+          width: 100%;
+          height: 1px;
+          position: absolute;
+          right: 2em;
+          left: 2em;
+          bottom: 0;
+          z-index: 1;
+          border-bottom: 1px dotted rgba(127, 127, 127, 0.2);
+          display: inline-block;
+        }
+        
+        i.rounded {
+          position: relative;
+          left: 0;
+          font-size: 0.6em;
+          display: inline-block;
+          margin-right: 1em;
+          opacity: 0.4;
+          background: #2e2e2e;
+          color: #ccc;
+          box-shadow: none;
+        }
+        
+        .link-num {
+          position: absolute;
+          right: 0;
+          z-index: 1;
+          color: #eee;
+          display: block;
+          top: 0;
+          text-align: left;
+          width: 1em;
+          font-size: 1em;
+          font-family: norm;
+          font-weight: 100;
+        }
+
+        $num: 1;
+        @while $num < 8 {
+            &:nth-of-type(#{$num}) {
+              transition-delay: 0.1s * $num;
+            }
+            $num: $num + 1;
+        }
+    }
+  }
+  
+  &.active {
+    visibility: visible;
+    z-index: 100;
+    transition: z-index 0s 0s, visibility 0s 0s;
+
+    .nav {
+      z-index: 101;
+			opacity: 1;
+      transform: translate3d(0,0,0);
+      transition: transform $t6 $easeInBack $t2, z-index 0s 3s;
+      will-change: transform;
+      
+      a {
+          transform: translate3d(0,0,0);
+          transition: $t6 $easeInBack $t4, opacity 0s 0s;
+          opacity: 1;
+          will-change: transform;
+          z-index: 102;
+          
+          $num: 1;
+          @while $num < 6 {
+            &:nth-of-type(#{$num}) {
+              transition-delay: 0.1s * $num + 1;
+            }
+            $num: $num + 1;
+          }
+      }
+      
+    }
+    
+    &:before,
+    &:after {
+      z-index: 1;
+      visibility: visible;
+    }
+    
+    &:before {
+      transform: translate(0, 100%) scaleY(1);
+      transition: transform $t5 $easeIn $t2, z-index 0s 0s, visibility 0s 0s;
+    }
+    &:after {
+      transform: translate(0, -100%) scaleY(1);
+      transition: transform  $t5 $easeIn $t2, z-index 0s 0s, visibility 0s 0s;
+    }
+  }
+}
+
+.navOpen {
+
+
+}
+
+
+
+header > .nav {
+		height: 100%;
+		display: flex;
+		position: relative;
+		flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 48em;
+    text-align: center;
+		@include XS { display: none; }
+
+		a.link {
+			position: relative;
+      flex: 1;
+			display: flex;
+      padding: 0.5em 4em;
+      text-transform: uppercase;
+      font-family: norm;
+      font-size: 0.64em;
+      letter-spacing: 0.01em;
+      font-weight:100;
+      justify-content: space-between;
+      align-items: center;
+
+      span.link-num {
+        font-family: bold;
+        font-size: 2.5em;
+        display: block;
+        padding: 0em;
+        line-height: 1;
+        color:#aaa;
+      }
+      
+      i {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.75em;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+        color: #777;
+      }
+      
+      span.link-title {
+      
+      }
+      
+			@include beforeafter(0.5em,0.5em,1px,1px);
+			
+			&:before {
+				position: absolute;
+				bottom: -0.5em;
+				left: 50%;
+				transition: transform $t2 $easeSwipe $t1;
+				transform: translate3d(-50%,0%,0);
+        z-index: -1;
+        border-radius:50%;
+        box-shadow: 0 0 0 0.2em #eee;
+			}
+      
+			&:after {
+				width: 0;
+				height: 0;
+				top: 0;
+				position: absolute;
+				bottom: 0;
+				margin: auto;
+				left: 0px;
+			}
+
+			span {
+				transition: color $t2 0s,  $t2 $easeSwipe $t1;
+				text-transform: uppercase;
+			}
+      
+			&:hover {
+				transition: color $t2 0s;
+				color:#444;
+        
+				&:before {				
+          transition: transform $t2 $ease $t1;
+					transform: translate3d(0,0,0);
+				}
+				
+				span {
+					transition: color $t1 0s,  transform $t2 $ease 0s;
+					&:before {
+						transition: color $t1 0s,  transform $t2 $ease 0s;
+					}
+				}	
+			}
+      
+      &.active {
+				transition: color 0.2s $ease 0s;
+				color:#000;
+				
+				&:before {
+					background: #f5f5f5;
+          transition: transform 0.4s $ease 0.4s;
+					transform: translate3d(0,0,0);
+				}
+				
+				span {
+					transition: color 0.25s 0s,  transform 0.4s $ease 0s;
+
+					&:before {
+						transition: color 0.25s 0s,  transform 0.4s $ease 0.4s;
+					}
+				}	
+			}
+		}
+}
